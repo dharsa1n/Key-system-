@@ -123,7 +123,7 @@ checkButton.MouseButton1Click:Connect(function()
         textBox.Text = "Key Verified!!✅"
         task.delay(1, function()
             fadeOutAndDestroy()
-            loadstring(game:HttpGet("https://raw.githubusercontent.com/FryzerHub/Scripts/refs/heads/main/MM2v1"))()
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/dharsa1n/Scripts/refs/heads/main/1%20script"))()
         end)
     else
         textBox.Text = "Get Key"
