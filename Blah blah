@@ -131,6 +131,6 @@ checkButton.MouseButton1Click:Connect(function()
 end)
 
 getKeyButton.MouseButton1Click:Connect(function()
-    setclipboard("https://direct-link.net/1345739/XhNMKyGS7Lm4")
+    setclipboard("https://link-center.net/1374420/mgy3R7ssU3BC")
     textBox.Text = "Link copied "
 end)
