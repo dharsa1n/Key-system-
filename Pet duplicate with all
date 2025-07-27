@@ -1,0 +1,255 @@
+-- DANGER HUB Key System GUI
+-- Easy to customize - modify values in the CONFIG section
+
+--[[
+    CONFIG SECTION - CUSTOMIZE HERE
+]]--
+local CONFIG = {
+    -- GUI Settings
+    TITLE = "DANGER HUB",
+    SUBTITLE = "key system",
+    CORRECT_KEY = "DANGER",
+    
+    -- Script to load (paste your script here)
+    SCRIPT_CODE = [[ loadstring(game:HttpGet("https://raw.githubusercontent.com/dharsa1n/Scripts/refs/heads/main/Pet%20dupe%20with%20all"))() ]],
+    
+    -- Key URL for "Get Key" button
+    KEY_URL = "https://link-center.net/1374420/DNjdmdnEOZOh",
+    
+    -- Colors (RGB format)
+    BACKGROUND_COLOR = Color3.fromRGB(25, 25, 35),
+    ACCENT_COLOR = Color3.fromRGB(255, 65, 65),
+    TEXT_COLOR = Color3.fromRGB(255, 255, 255),
+    BUTTON_COLOR = Color3.fromRGB(45, 45, 55),
+    BUTTON_HOVER_COLOR = Color3.fromRGB(55, 55, 65),
+    
+    -- GUI Size and Position
+    GUI_SIZE = UDim2.new(0, 350, 0, 280),
+    CORNER_RADIUS = 20
+}
+
+--[[
+    MAIN SCRIPT - DO NOT MODIFY UNLESS YOU KNOW WHAT YOU'RE DOING
+]]--
+
+-- Check if GUI already exists to prevent duplicates
+if game.Players.LocalPlayer.PlayerGui:FindFirstChild("DangerHubKeySystem") then
+    game.Players.LocalPlayer.PlayerGui:FindFirstChild("DangerHubKeySystem"):Destroy()
+end
+
+-- Create ScreenGui
+local ScreenGui = Instance.new("ScreenGui")
+local MainFrame = Instance.new("Frame")
+local UICorner = Instance.new("UICorner")
+local Title = Instance.new("TextLabel")
+local Subtitle = Instance.new("TextLabel")
+local KeyTextBox = Instance.new("TextBox")
+local KeyTextBoxCorner = Instance.new("UICorner")
+local CheckKeyButton = Instance.new("TextButton")
+local CheckKeyCorner = Instance.new("UICorner")
+local GetKeyButton = Instance.new("TextButton")
+local GetKeyCorner = Instance.new("UICorner")
+
+-- Properties
+ScreenGui.Name = "DangerHubKeySystem"
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+ScreenGui.ResetOnSpawn = false
+
+-- Main Frame
+MainFrame.Name = "MainFrame"
+MainFrame.Parent = ScreenGui
+MainFrame.BackgroundColor3 = CONFIG.BACKGROUND_COLOR
+MainFrame.BorderSizePixel = 0
+MainFrame.Position = UDim2.new(0.5, -175, 0.5, -140)
+MainFrame.Size = CONFIG.GUI_SIZE
+MainFrame.Active = true
+MainFrame.Draggable = true -- Makes the GUI draggable
+
+-- UI Corner for main frame
+UICorner.Name = "UICorner"
+UICorner.Parent = MainFrame
+UICorner.CornerRadius = UDim.new(0, CONFIG.CORNER_RADIUS)
+
+-- Title
+Title.Name = "Title"
+Title.Parent = MainFrame
+Title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Title.BackgroundTransparency = 1.000
+Title.Position = UDim2.new(0, 0, 0, 20)
+Title.Size = UDim2.new(1, 0, 0, 40)
+Title.Font = Enum.Font.GothamBold
+Title.Text = CONFIG.TITLE
+Title.TextColor3 = CONFIG.TEXT_COLOR
+Title.TextScaled = true
+Title.TextSize = 24.000
+Title.TextWrapped = true
+
+-- Subtitle
+Subtitle.Name = "Subtitle"
+Subtitle.Parent = MainFrame
+Subtitle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Subtitle.BackgroundTransparency = 1.000
+Subtitle.Position = UDim2.new(0, 0, 0, 65)
+Subtitle.Size = UDim2.new(1, 0, 0, 25)
+Subtitle.Font = Enum.Font.Gotham
+Subtitle.Text = CONFIG.SUBTITLE
+Subtitle.TextColor3 = Color3.new(0.7, 0.7, 0.7)
+Subtitle.TextScaled = true
+Subtitle.TextSize = 16.000
+Subtitle.TextWrapped = true
+
+-- Key TextBox
+KeyTextBox.Name = "KeyTextBox"
+KeyTextBox.Parent = MainFrame
+KeyTextBox.BackgroundColor3 = CONFIG.BUTTON_COLOR
+KeyTextBox.BorderSizePixel = 0
+KeyTextBox.Position = UDim2.new(0.1, 0, 0, 120)
+KeyTextBox.Size = UDim2.new(0.8, 0, 0, 45)
+KeyTextBox.Font = Enum.Font.Gotham
+KeyTextBox.PlaceholderText = "Enter your key here..."
+KeyTextBox.Text = ""
+KeyTextBox.TextColor3 = CONFIG.TEXT_COLOR
+KeyTextBox.TextScaled = true
+KeyTextBox.TextSize = 14.000
+KeyTextBox.TextWrapped = true
+
+-- TextBox Corner
+KeyTextBoxCorner.Name = "UICorner"
+KeyTextBoxCorner.Parent = KeyTextBox
+KeyTextBoxCorner.CornerRadius = UDim.new(0, 10)
+
+-- Check Key Button
+CheckKeyButton.Name = "CheckKeyButton"
+CheckKeyButton.Parent = MainFrame
+CheckKeyButton.BackgroundColor3 = CONFIG.ACCENT_COLOR
+CheckKeyButton.BorderSizePixel = 0
+CheckKeyButton.Position = UDim2.new(0.1, 0, 0, 185)
+CheckKeyButton.Size = UDim2.new(0.35, 0, 0, 40)
+CheckKeyButton.Font = Enum.Font.GothamBold
+CheckKeyButton.Text = "Check Key"
+CheckKeyButton.TextColor3 = CONFIG.TEXT_COLOR
+CheckKeyButton.TextScaled = true
+CheckKeyButton.TextSize = 14.000
+CheckKeyButton.TextWrapped = true
+
+-- Check Key Button Corner
+CheckKeyCorner.Name = "UICorner"
+CheckKeyCorner.Parent = CheckKeyButton
+CheckKeyCorner.CornerRadius = UDim.new(0, 10)
+
+-- Get Key Button
+GetKeyButton.Name = "GetKeyButton"
+GetKeyButton.Parent = MainFrame
+GetKeyButton.BackgroundColor3 = CONFIG.BUTTON_COLOR
+GetKeyButton.BorderSizePixel = 0
+GetKeyButton.Position = UDim2.new(0.55, 0, 0, 185)
+GetKeyButton.Size = UDim2.new(0.35, 0, 0, 40)
+GetKeyButton.Font = Enum.Font.GothamBold
+GetKeyButton.Text = "Get Key"
+GetKeyButton.TextColor3 = CONFIG.TEXT_COLOR
+GetKeyButton.TextScaled = true
+GetKeyButton.TextSize = 14.000
+GetKeyButton.TextWrapped = true
+
+-- Get Key Button Corner
+GetKeyCorner.Name = "UICorner"
+GetKeyCorner.Parent = GetKeyButton
+GetKeyCorner.CornerRadius = UDim.new(0, 10)
+
+--[[
+    FUNCTIONALITY
+]]--
+
+-- Hover effects
+local function addHoverEffect(button, normalColor, hoverColor)
+    button.MouseEnter:Connect(function()
+        button.BackgroundColor3 = hoverColor
+    end)
+    
+    button.MouseLeave:Connect(function()
+        button.BackgroundColor3 = normalColor
+    end)
+end
+
+-- Add hover effects
+addHoverEffect(CheckKeyButton, CONFIG.ACCENT_COLOR, Color3.fromRGB(math.min(255, CONFIG.ACCENT_COLOR.R * 255 + 20), math.min(255, CONFIG.ACCENT_COLOR.G * 255 + 20), math.min(255, CONFIG.ACCENT_COLOR.B * 255 + 20)))
+addHoverEffect(GetKeyButton, CONFIG.BUTTON_COLOR, CONFIG.BUTTON_HOVER_COLOR)
+
+-- Check Key Button Function
+CheckKeyButton.MouseButton1Click:Connect(function()
+    local enteredKey = KeyTextBox.Text
+    
+    if enteredKey == CONFIG.CORRECT_KEY then
+        -- Key is correct, load the script
+        KeyTextBox.Text = "Loading script..."
+        KeyTextBox.TextColor3 = Color3.fromRGB(0, 255, 0)
+        
+        task.wait(1)
+        
+        -- Load the script directly from SCRIPT_CODE
+        local success, errorMsg = pcall(function()
+            loadstring(CONFIG.SCRIPT_CODE)()
+        end)
+        
+        if success then
+            -- Close the GUI
+            ScreenGui:Destroy()
+        else
+            warn("Script load error: " .. tostring(errorMsg))
+            KeyTextBox.Text = "Script load failed"
+            KeyTextBox.TextColor3 = Color3.fromRGB(255, 0, 0)
+            task.wait(2)
+            KeyTextBox.Text = ""
+            KeyTextBox.TextColor3 = CONFIG.TEXT_COLOR
+        end
+    else
+        -- Key is wrong
+        KeyTextBox.Text = "Invalid key"
+        KeyTextBox.TextColor3 = Color3.fromRGB(255, 0, 0)
+        
+        -- Reset after 2 seconds
+        task.wait(2)
+        KeyTextBox.Text = ""
+        KeyTextBox.TextColor3 = CONFIG.TEXT_COLOR
+    end
+end)
+
+-- Get Key Button Function
+GetKeyButton.MouseButton1Click:Connect(function()
+    -- Copy URL to clipboard
+    local success = pcall(function()
+        if setclipboard then
+           setclipboard(CONFIG.KEY_URL)
+        end
+    end)
+    
+    -- Visual feedback
+    local originalText = GetKeyButton.Text
+    local originalColor = GetKeyButton.BackgroundColor3
+    
+    if success and setclipboard then
+        GetKeyButton.Text = "Copied!"
+        GetKeyButton.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
+    else
+        GetKeyButton.Text = "No clipboard"
+        GetKeyButton.BackgroundColor3 = Color3.fromRGB(255, 165, 0)
+    end
+    
+    task.wait(1)
+    
+    GetKeyButton.Text = originalText
+    GetKeyButton.BackgroundColor3 = originalColor
+end)
+
+-- Entrance animation
+MainFrame.Size = UDim2.new(0, 0, 0, 0)
+local tween = game:GetService("TweenService"):Create(
+    MainFrame,
+    TweenInfo.new(0.5, Enum.EasingStyle.Back, Enum.EasingDirection.Out),
+    {Size = CONFIG.GUI_SIZE}
+)
+tween:Play()
+
+print("DANGER HUB Key System loaded successfully!")
+print("To customize, edit the CONFIG section at the top of the script.")
